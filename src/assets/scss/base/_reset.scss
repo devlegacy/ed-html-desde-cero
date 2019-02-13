@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *:after, *:before {
+  box-sizing: inherit;
+  // padding: 0;
+  // margin: 0;
+}

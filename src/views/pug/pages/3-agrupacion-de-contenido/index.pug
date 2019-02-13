@@ -1,0 +1,44 @@
+extends ../../templates/base.pug
+block config
+  - const baseOpenGraphImage1200x1200  = require('../../../../assets/img/dist/opengraph/opengraph-1200x1200.jpg');
+  - const baseOpenGraphImage1200x640  = require('../../../../assets/img/dist/opengraph/opengraph-1200x640.png');
+  - const linkToHumansTXT     = require('../../../../humans.txt');
+block header
+  header
+    h1 Mi primera página web | Módulo 3 - agrupación de contenido
+block main
+  p Mis platillos favoritos
+  p ul: listas no ordenadas (el orden no importa)
+  p ol: listas ordenadas (el orden importa)
+  ul.menu
+    li Pasta
+      ol
+        li Pasta
+        li Tomate
+    li Empanizado
+      ol
+        li Pasta
+        li Tomate
+    li Ramen
+      ol
+        li Pasta
+        li Tomate
+
+  p Lista de capitales de Latinoamérica
+  dl
+    dt Perú
+    dd Lima
+    dt Colombia
+    dd Bogotá
+    dt Bolivia
+    dd La paz
+  hr
+  br
+  figure
+    pre
+      code
+        | function message() {
+        |  return 'Hello';
+        | }
+    figcaption Ejemplo de una función en JavaScript
+

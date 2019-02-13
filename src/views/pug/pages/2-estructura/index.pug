@@ -1,0 +1,35 @@
+extends ../../templates/base.pug
+block config
+  - const baseOpenGraphImage1200x1200  = require('../../../../assets/img/dist/opengraph/opengraph-1200x1200.jpg');
+  - const baseOpenGraphImage1200x640  = require('../../../../assets/img/dist/opengraph/opengraph-1200x640.png');
+  - const linkToHumansTXT     = require('../../../../humans.txt');
+  - const logoEDteam = require('../../../../assets/img/dist/logos/logo-edteam.svg');
+block header
+  header
+    img(src=logoEDteam, alt="Logo de EDteam")
+    h1 Mi primera página web | Módulo 2 - Estructura
+block main
+  p Componentes básicos de una páginas web, etiquetas, atributos y archivos tales como hojas de estilos y scripts
+  figure
+    pre
+      | Clic derecho + inspecionar | F12 | Ctrl + U
+    figcaption Permite ver los elementos integrados en esta web a través de los siguiente atajos de teclado
+
+  article
+    h2 Bienvenido al sitio web
+    p Presentando el contenido de la página
+    h3 Experiencia en el curso
+    section
+      h4 Día 1
+      p Resumen del día uno
+    section
+      h4 Día 2
+      p Resumen del día dos
+    section
+      h4 Notes:
+      p Los titulos h(n+1) no pueden ser colocados si no existe un h(n-1) previo en el arbol de nodos es decir, para que un h4 pueda ser declarado, en la parte superior debe haber un h3 declarado posterior a un h2 y este posterior a un h1
+  aside
+    | Publicidad para compras de cursos
+block prepend footer
+  footer
+    h6 Pie de página | Samuel R.

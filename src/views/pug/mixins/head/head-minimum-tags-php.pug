@@ -1,0 +1,12 @@
+mixin headMinimumTagsPHP(title, publicPath, canonical='')
+  //- The following 2 meta tags *must* come first in the <head>
+  //- to consistently ensure proper document rendering.
+  //- Any other head element should come *after* these tags.
+  meta(charset="utf-8")
+  meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, height=device-height")
+
+  base(href=`${canonical}`)
+  link(rel="canonical", href=`${canonical}`)
+
+  title
+    | <?= (isset($title) && !empty($title)) ? $title : 'Default title' ?>

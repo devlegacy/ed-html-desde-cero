@@ -1,0 +1,33 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+/* TEAM */
+
+  Frontend developer: Maximiliano Tec Cocom
+  Contact: mtec@devexteam.com
+  Twitter: @maxitec
+  From: Cancún, Quintana Roo, México
+
+  Backend developer: Samuel R.
+  Contact: samuel@devexteam.com
+  Twitter: @_samuelrt
+  From: Cancún, Quintana Roo, México
+
+  Project Manager: Nestor Betaza Cruz
+  Contact: nbetaza@devexteam.com
+  Twitter: @nexpayne
+  From: Playa del carmen, Solidaridad, México
+
+/* THANKS */
+
+  EN Translator: Demo User
+  Twitter: @demouser
+  From: Kapiolani, EEUU
+
+
+/* SITE */
+
+  Last update: 2018/07/05
+  Language: Spanish / English
+  Doctype: HTML5
+  IDE: Visual Studio Code, FileZilla, Xampp, Adobe XD, Invision

@@ -1,0 +1,13 @@
+- const title               = (htmlWebpackPlugin.options.title || 'Default pug config title');
+- const lang                = (htmlWebpackPlugin.options.lang || 'es-MX');
+- const dir                 = (htmlWebpackPlugin.options.dir || 'ltr');
+- const description         = (htmlWebpackPlugin.options.description || 'Default pug config description');
+
+- const PRODUCTION          = htmlWebpackPlugin.options.PRODUCTION;
+- const publicPath          = (htmlWebpackPlugin.options.publicPath || {root:'/', full: '/', startUrl: '/'});
+- const _data = htmlWebpackPlugin.options.data || {};
+
+- const myPath = `../../assets/img/dist/opengraph/`;
+//- - const myImage = require('../../assets/img/dist/opengraph/opengraph-1200x640.png');
+- const demo = `${myPath}opengraph-1200x640.png`;
+//- - const demoDynamicLoad = require(demo);

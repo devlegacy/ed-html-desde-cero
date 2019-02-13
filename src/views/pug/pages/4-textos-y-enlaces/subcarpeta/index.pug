@@ -1,0 +1,11 @@
+extends ../../../templates/base.pug
+block config
+  - const baseOpenGraphImage1200x1200  = require('../../../../../assets/img/dist/opengraph/opengraph-1200x1200.jpg');
+  - const baseOpenGraphImage1200x640  = require('../../../../../assets/img/dist/opengraph/opengraph-1200x640.png');
+  - const linkToHumansTXT     = require('../../../../../humans.txt');
+block header
+  header
+    h1 Mi primera página web | Módulo 4 - agrupación de contenido - Subcarpeta
+block main
+  p
+    a(href="/4-textos-y-enlaces/subcarpeta/index.html/../../") Volver
