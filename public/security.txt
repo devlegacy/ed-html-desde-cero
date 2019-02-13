@@ -1,0 +1,5 @@
+# securitytxt.org
+# Our security address
+
+Contact: samuel@devexteam.com
+Encryption: https://devexteam.com/pgp-key.txt

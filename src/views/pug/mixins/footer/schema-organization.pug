@@ -1,0 +1,28 @@
+mixin schemaOrganization()
+  script(type="application/ld+json")
+    | {
+    |  "@context": "http://schema.org",
+    |  "@type": "Organization",
+    |  "name": "Devexteam",
+    |  "url": "https://devexteam.com/",
+    |  "description": "Desarrollo de experiencias.",
+    |  "foundingDate": "2016-01-01",
+    |  "founders": [
+    |      {
+    |          "@type": "Person",
+    |          "name": "Nestor Betaza Cruz"
+    |      },
+    |      {
+    |          "@type": "Person",
+    |          "name": "Maximiliano Tec Cocom"
+    |      },
+    |      {
+    |          "@type": "Person",
+    |          "name": "Samuel R."
+    |      }
+    |  ],
+    |  "sameAs": [
+    |      "https://www.facebook.com/devexteam/",
+    |      "https://twitter.com/devexteam"
+    |  ]
+    | }

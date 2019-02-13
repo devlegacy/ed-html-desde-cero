@@ -12,3 +12,19 @@ body {
 .menu {
   margin-left: 20px;
 }
+
+table {
+  border-collapse: collapse;
+  td {
+    border: 1px solid #ccc;
+  }
+  th {
+    background-color: #444;
+    color: #fff;
+  }
+  td, th {
+    padding: .5em;
+
+    text-align: center;
+  }
+}

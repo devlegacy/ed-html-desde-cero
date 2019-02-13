@@ -154,7 +154,7 @@ module.exports = (env, args) => {
               },
               // Add support for multimedia - Media
               {
-                test: /\.(mp4|mp3|txt|xml)$/,
+                test: /\.(mov|mp4|mp3|txt|xml)$/,
                 exclude: /(humans|robots|security)\.txt$/,
                 use: [
                   // cacheLoader,
@@ -304,6 +304,46 @@ module.exports = (env, args) => {
               },
               excludeAssets: [/assets\/css\/.*.js/],
             }, 'public/6-microdatos'),
+            html({
+              template: 'src/views/pug/pages/7-tablas/index.pug',
+              filename: 'index.html',
+              title: 'Mi primera página web con EDteam',
+              meta: {
+                description: 'Primer proyecto web con EDteam',
+                keywords: 'html, css, javascript, web, proyecto',
+              },
+              excludeAssets: [/assets\/css\/.*.js/],
+            }, 'public/7-tablas'),
+            html({
+              template: 'src/views/pug/pages/8-formularios/index.pug',
+              filename: 'index.html',
+              title: 'Mi primera página web con EDteam',
+              meta: {
+                description: 'Primer proyecto web con EDteam',
+                keywords: 'html, css, javascript, web, proyecto',
+              },
+              excludeAssets: [/assets\/css\/.*.js/],
+            }, 'public/8-formularios'),
+            html({
+              template: 'src/views/pug/pages/9-multimedia/index.pug',
+              filename: 'index.html',
+              title: 'Mi primera página web con EDteam',
+              meta: {
+                description: 'Primer proyecto web con EDteam',
+                keywords: 'html, css, javascript, web, proyecto',
+              },
+              excludeAssets: [/assets\/css\/.*.js/],
+            }, 'public/9-multimedia'),
+            html({
+              template: 'src/views/pug/pages/10-contenido-interactivo/index.pug',
+              filename: 'index.html',
+              title: 'Mi primera página web con EDteam',
+              meta: {
+                description: 'Primer proyecto web con EDteam',
+                keywords: 'html, css, javascript, web, proyecto',
+              },
+              excludeAssets: [/assets\/css\/.*.js/],
+            }, 'public/10-contenido-interactivo'),
             new HtmlWebpackExcludeAssetsPlugin(),
             new HtmlWebpackExcludeEmptyAssetsPlugin(),
             new HtmlSplitWebpackPlugin(),

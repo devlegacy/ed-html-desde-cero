@@ -3,7 +3,7 @@ include ../config
   include ../mixins/mixins.pug
   //- Note: En un template es necesario colocar el doctype debido a que el pug-loader de webpack no lo asigna*
   <!DOCTYPE html>
-  html(lang=lang dir=dir prefix="og: http://ogp.me/ns#")
+  html(lang=lang dir=dir)
     head
       +headMinimumTags(title, publicPath)
       link(rel="dns-prefetch" href=publicPath.full)
@@ -25,6 +25,10 @@ include ../config
         -                 {path: '4-textos-y-enlaces/marcadores/', name: 'Módulo 4 - Textos y enlaces - marcadores'},
         -                 {path: '5-imagenes/', name: 'Módulo 5 - Imagenes'},
         -                 {path: '6-microdatos/', name: 'Módulo 6 - Microdatos'},
+        -                 {path: '7-tablas/', name: 'Módulo 7 - tablas'},
+        -                 {path: '8-formularios/', name: 'Módulo 8 - formularios'},
+        -                 {path: '9-multimedia/', name: 'Módulo 9 - multimedia'},
+        -                 {path: '10-contenido-interactivo/', name: 'Módulo 10 - contenido interactivo'},
         -               ]
         nav
           ul
