@@ -1,0 +1,23 @@
+extends ../../templates/base.pug
+block config
+  - const baseOpenGraphImage1200x1200  = require('../../../../assets/img/dist/opengraph/opengraph-1200x1200.jpg');
+  - const baseOpenGraphImage1200x640  = require('../../../../assets/img/dist/opengraph/opengraph-1200x640.png');
+  - const shoe  = require('../../../../assets/img/dist/logos/shoe.jpeg');
+  - const linkToHumansTXT     = require('../../../../humans.txt');
+block header
+  header
+    h1 Mi primera página web | Módulo 6 - microdatos
+block main
+
+  article
+    h2 Zapatilla deportiva
+    img(src=shoe, alt="Zapatill deportiva", width="25%")
+    p Marca: #[span Niki]
+    p Precio: #[span $300.00]
+
+
+  article(itemscope, itemtype="http://schema.org/Blog")
+    h2 Noticia acerca de un curso
+    p Este viernes en horario...
+    footer
+      p(itemprop="author") Samuel R.

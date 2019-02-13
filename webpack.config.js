@@ -274,6 +274,36 @@ module.exports = (env, args) => {
               },
               excludeAssets: [/assets\/css\/.*.js/],
             }, 'public/4-textos-y-enlaces/subcarpeta'),
+            html({
+              template: 'src/views/pug/pages/4-textos-y-enlaces/marcadores/index.pug',
+              filename: 'index.html',
+              title: 'Mi primera página web con EDteam',
+              meta: {
+                description: 'Primer proyecto web con EDteam',
+                keywords: 'html, css, javascript, web, proyecto',
+              },
+              excludeAssets: [/assets\/css\/.*.js/],
+            }, 'public/4-textos-y-enlaces/marcadores'),
+            html({
+              template: 'src/views/pug/pages/5-imagenes/index.pug',
+              filename: 'index.html',
+              title: 'Mi primera página web con EDteam',
+              meta: {
+                description: 'Primer proyecto web con EDteam',
+                keywords: 'html, css, javascript, web, proyecto',
+              },
+              excludeAssets: [/assets\/css\/.*.js/],
+            }, 'public/5-imagenes'),
+            html({
+              template: 'src/views/pug/pages/6-microdatos/index.pug',
+              filename: 'index.html',
+              title: 'Mi primera página web con EDteam',
+              meta: {
+                description: 'Primer proyecto web con EDteam',
+                keywords: 'html, css, javascript, web, proyecto',
+              },
+              excludeAssets: [/assets\/css\/.*.js/],
+            }, 'public/6-microdatos'),
             new HtmlWebpackExcludeAssetsPlugin(),
             new HtmlWebpackExcludeEmptyAssetsPlugin(),
             new HtmlSplitWebpackPlugin(),

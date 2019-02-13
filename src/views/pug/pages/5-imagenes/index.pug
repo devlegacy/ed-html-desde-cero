@@ -1,0 +1,21 @@
+extends ../../templates/base.pug
+block config
+  - const baseOpenGraphImage1200x1200  = require('../../../../assets/img/dist/opengraph/opengraph-1200x1200.jpg');
+  - const baseOpenGraphImage1200x640  = require('../../../../assets/img/dist/opengraph/opengraph-1200x640.png');
+  - const batman  = require('../../../../assets/img/dist/logos/batman.jpeg');
+  - const house  = require('../../../../assets/img/dist/logos/house.jpeg');
+  - const winter  = require('../../../../assets/img/dist/logos/winter.jpeg');
+  - const linkToHumansTXT     = require('../../../../humans.txt');
+block header
+  header
+    h1 Mi primera página web | Módulo 5 - imagenes
+block main
+  img(src="https://images.pexels.com/photos/1203777/pexels-photo-1203777.jpeg?cs=srgb&dl=batman-cartoon-color-1203777.jpg&fm=jpg", alt="Imagen desde la red", width="25%", title="Imagen desde la red")
+  img(src=batman, alt="Imagen desde la red", width="25%", title="Imagen desde los assets como recurso")
+  img( alt="", srcset=`${winter} 2x, ${house} 1.5x`,src=batman,  width="25%")
+  img( alt="", srcset=`${winter} 800w, ${house} 500w`,src=batman,  width="25%")
+
+  picture
+    source(srcset=winter, media="(min-width: 800px)")
+    source(srcset=house,media="(min-width: 500px)")
+    img(src=batman, alt="Imagen desde la red", width="25%", title="Imagen desde los assets como recurso")

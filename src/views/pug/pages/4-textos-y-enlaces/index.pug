@@ -48,9 +48,11 @@ block main
     a(href="//ed.team" target="_blank") Educación con honestidad
   p
     //- Ruta relativa a la carpeta
-    //- No funciona el ./subcarpeta con el base url debido a que completa la ruta relativa con el href
+    //- No funciona el ./subcarpeta con la etiqueta (base url) en el head debido a que completa la ruta relativa con el href
     //- Aplicando el mismo concepto pero con especificidad de carpetas
     a(href="./4-textos-y-enlaces/subcarpeta/index.html") Subcarpeta
   p
     //- Ruta relativa al dominio y la carpeta en el servidor web
     a(href="/realive.html") Relativo
+
+  p #[a(href=`${publicPath.root}4-textos-y-enlaces/marcadores/#capitulo2`) Ir al capítulo 2 de la página marcadores]
