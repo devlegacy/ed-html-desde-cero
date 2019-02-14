@@ -81,8 +81,10 @@
     "normalize.css": "^8.0.1"
   },
   "app": {
-    "url": "https://devlegacy.github.io",
-    "subDomain": "ed-html-desde-cero",
+    "url": {
+      "origin": "https://devlegacy.github.io",
+      "pathname": "ed-html-desde-cero"
+    },
     "lang": "es-MX",
     "dir": "ltr",
     "name": "HTML desde Cero",

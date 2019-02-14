@@ -2,6 +2,8 @@ const { resolve, join } = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 const glob = require('glob-all');
+const url = require('url');
+
 class Config {
   constructor() {
     this.outputPath = this.setOutputPath();
@@ -95,31 +97,40 @@ class Config {
   }
 
   setPublicPath() {
-    const { app: { url, subDomain } } = this.getPackage();
-    const URL = 'http://localhost';
+    const { app: { url: { origin, pathname } } } = this.getPackage();
+    const DEFAULT_URL = 'http://localhost';
     const { DVX_BROWSER_SYNC_PORT, DVX_HTTP_SERVER_PORT } = this.dotEnv();
-    let root = '/';
-    let full = '';
-    let startUrl = '';
-    let appUrl = '';
 
-    if (this.hot() || this.serviceWorker()) {
-      full = `${URL}:${DVX_BROWSER_SYNC_PORT}`;
-      startUrl = `${root}?utm=homescreen`
-    } else if (this.local()) {
-      full = `${URL}:${DVX_HTTP_SERVER_PORT}`;
-      startUrl = `${root}?utm=homescreen`
-    } else {
-      root = subDomain ? `/${subDomain}/` : '/';
-      full = subDomain ? `${url}/${subDomain}` : `${url}`;
-      appUrl = url;
-      startUrl = `${root}?utm=homescreen`
-    }
+    const app_origin = this.hot() || this.serviceWorker() || this.local() ? DEFAULT_URL : origin;
+    const app_pathname = this.hot() || this.serviceWorker() || this.local() ? '' : pathname;
+
+    const APP_URL = new URL(`${app_pathname}/`, app_origin);
+    APP_URL.port =
+      (this.hot() || this.serviceWorker())
+        ? DVX_BROWSER_SYNC_PORT
+        : (this.local() ? DVX_HTTP_SERVER_PORT : '');
+
+    const startURL = url
+      .format({
+        // protocol: APP_URL.protocol,
+        // hostname: '/',
+        pathname: `${APP_URL.pathname}/`,
+        query: { utm: 'homescreen' }
+      })
+      .replace('//', '/');
+
+    log('[url-info]', {
+      href: APP_URL.href, // Full path
+      pathname: APP_URL.pathname,
+      origin: APP_URL.origin,
+      startURL,
+    });
+
     return {
-      root,
-      full,
-      startUrl,
-      url: appUrl,
+      href: APP_URL.href, // Full path
+      pathname: APP_URL.pathname,
+      origin: APP_URL.origin,
+      startURL,
     };
   }
 

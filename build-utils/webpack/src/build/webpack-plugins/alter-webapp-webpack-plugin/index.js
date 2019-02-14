@@ -62,7 +62,7 @@ class AlterWebappWebpackPluigin {
             const manifestJson = JSON.parse(file.contents);
             // Add some extra options to manifest.webmanifest that favicons library does not return
             // Result validated in: https://manifest-validator.appspot.com/
-            manifestJson.scope = Config.publicPath.root;
+            manifestJson.scope = Config.publicPath.pathname;
             manifestJson.short_name = this.short_name;
             manifestJson.developer = {
               name: this.developer_name,
@@ -70,7 +70,7 @@ class AlterWebappWebpackPluigin {
             };
             manifestJson.serviceWorker = {
               "src": this.serviceWorker.src,
-              "scope": Config.publicPath.root,
+              "scope": Config.publicPath.pathname,
               "update_via_cache": this.serviceWorker.update_via_cache
             };
             manifestJson.categories = this.categories;
@@ -80,7 +80,7 @@ class AlterWebappWebpackPluigin {
             if (Array.isArray(manifestJson.related_applications)) {
               manifestJson.related_applications = manifestJson.related_applications.map(related => {
                 if (related.platform === 'web' && !related.url) {
-                  related.url = Config.publicPath.full;
+                  related.url = Config.publicPath.href;
                 }
                 return related;
               });

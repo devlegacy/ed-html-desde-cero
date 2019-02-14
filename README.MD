@@ -1,3 +1,13 @@
 # Curso de HTML 5 desde Cero
 
-[Demo](https://devlegacy.github.io/ed-html-desde-cero/)
+[Aplicación demo](https://devlegacy.github.io/ed-html-desde-cero/)
+
+## Notas
+
+### Publish in github-pages
+
+```bash
+  npm start webpack.build.prod
+  git subtree push --prefix public origin gh-pages
+  rm -R ./public/
+```

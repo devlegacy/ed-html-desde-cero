@@ -16,7 +16,7 @@ module.exports = (src) => {
       inject: true,
       // Favicons configuration options. Read more on: https://github.com/evilebottnawi/favicons#usage
       favicons: {
-        path: Config.publicPath.root,                                   // Path for overriding default icons path. `string`
+        path: Config.publicPath.pathname,                                   // Path for overriding default icons path. `string`
         appName: app.name,                                              // Your application's name. `string`
         appShortName: app.short_name,                                   // Your application's short name. `string` : Not implemented
         appDescription: app.description,                                // Your application's description. `string`
@@ -29,15 +29,15 @@ module.exports = (src) => {
         appleStatusBarStyle: app.apple_status_bar_style,                // Color for appleStatusBarStyle : Not implemented (black-translucent | default | black)
         display: app.display,                                           // Preferred display mode: "fullscreen", "standalone", "minimal-ui" or "browser". `string`
         orientation: app.orientation,                                   // Default orientation: "any", "natural", "portrait" or "landscape". `string`
-        scope: Config.publicPath.root,                                  // Color for appleStatusBarStyle : Not implemented
-        start_url: Config.publicPath.startUrl,                          // Start URL when launching the application from a device. `string`
+        scope: Config.publicPath.pathname,                                  // Color for appleStatusBarStyle : Not implemented
+        start_url: Config.publicPath.startURL,                          // Start URL when launching the application from a device. `string`
         version: app.version,                                           // Your application's version string. `string`
         logging: false,                                                 // Print logs to console? `boolean`
         pixel_art: false,                                                // Keeps pixels "sharp" when scaling up, for pixel art.  Only supported in offline mode.
         loadManifestWithCredentials: false,       // Browsers don't send cookies when fetching a manifest, enable this to fix that. `boolean`
         serviceworker: {
           src: app.serviceWorker.src,
-          scope: Config.publicPath.root,
+          scope: Config.publicPath.pathname,
           update_via_cache: app.serviceWorker.update_via_cache
         },
         related_applications: app.related_applications,

@@ -57,7 +57,7 @@ module.exports = (env, args) => {
           },
           output: {
             path: resolve(__dirname, Config.outputPath.root),
-            publicPath: Config.publicPath.root,
+            publicPath: Config.publicPath.pathname,
           },
           module: {
             rules: [

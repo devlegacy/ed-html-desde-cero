@@ -1,11 +1,12 @@
 mixin imgMetaForOpenGraph(property, baseOpenGraphImage)
-  meta(property=property, content=`${publicPath.full}${baseOpenGraphImage}`)
+  - const url = PRODUCTION ? `${publicPath.origin}` : `${publicPath.href.slice(0,-1)}` ;
+  meta(property=property, content=`${url}${baseOpenGraphImage}`)
 
 mixin headOpenGraphTags(publicPath, baseOpenGraphImage)
   //- Open graph - Tags required
   meta(property="og:title" content="Devexteam")
   meta(property="og:type" content="website")
-  meta(property="og:url" content=publicPath.full)
+  meta(property="og:url" content=publicPath.href)
   //- Recommend: 1200x1200
   +imgMetaForOpenGraph("og:image", baseOpenGraphImage)
   meta(meta property="og:image:width", content="1200")

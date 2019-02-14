@@ -6,8 +6,8 @@ include ../config
   html(lang=lang dir=dir)
     head
       +headMinimumTags(title, publicPath)
-      link(rel="dns-prefetch" href=publicPath.full)
-      link(rel="preconnect" href=publicPath.full)
+      link(rel="dns-prefetch" href=publicPath.href)
+      link(rel="preconnect" href=publicPath.href)
       +headMicrosoftTags()
       +headGoogleTags()
       +headOpenGraphTags(publicPath, baseOpenGraphImage1200x640)
@@ -34,7 +34,7 @@ include ../config
           ul
             each url in urls
               li
-                +a(`${publicPath.root}${url.path}`,url.name)
+                +a(`${publicPath.pathname}${url.path}`,url.name)
       block main
       block footer
         script(src="https://cdn.polyfill.io/v2/polyfill.min.js")

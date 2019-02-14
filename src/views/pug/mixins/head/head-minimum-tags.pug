@@ -5,7 +5,7 @@ mixin headMinimumTags(title, publicPath)
   meta(charset="utf-8")
   meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, height=device-height")
 
-  base(href=publicPath.full)
-  link(rel="canonical", href=publicPath.full)
+  base(href=publicPath.href)
+  link(rel="canonical", href=publicPath.href)
 
   title= (title || 'Default pug title')
