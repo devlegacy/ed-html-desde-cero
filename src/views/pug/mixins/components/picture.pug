@@ -1,4 +1,0 @@
-mixin pic(name, ext, alt="Alternative text")
-  picture
-    source(srcset=require(`../img/webp/${name}.webp`), type="image/webp")
-    img(src=require(`../img/${name}.${ext}`), alt=`${alt}`)
