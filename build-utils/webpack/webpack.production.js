@@ -9,13 +9,21 @@ const bootstrap = require('bootstrap-styl');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const resolveUrlLoader = require('./src/build/webpack-loaders/resolve-url-loader/lib/join-function');
+const TerserPlugin = require('terser-webpack-plugin');
+
 module.exports = {
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-      }),
+      // new UglifyJsPlugin({
+      //   cache: true,
+      //   parallel: true,
+      // }),
+      new TerserPlugin(
+        {
+          parallel: true,
+          cache: Dvx.paths.cache(),
+        }
+      ),
       new OptimizeCSSAssetsPlugin({
         cssProcessorPluginOptions: {
           preset: ['default', { discardComments: { removeAll: true } }],
@@ -26,7 +34,9 @@ module.exports = {
   },
   output: {
     // the filename template for entry chunks
-    filename: '[name].[hash].js',
+    filename: (chunkData) => {
+      return chunkData.chunk.name === 'dvx-sw' ? '[name].js' : '[name].[hash].js';
+    },
     // the filename template for additional chunks
     chunkFilename: '[name].[chunkhash].js',
     // the url to the output directory resolved relative to the HTML page
