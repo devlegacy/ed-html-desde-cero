@@ -1,9 +1,0 @@
-{
-  "version": "1.0.0",
-  "api_version": 1,
-  "layout": {
-    "logo": "/ed-html-desde-cero/yandex-browser-50x50.png",
-    "color": "#4db7bc",
-    "show_title": true
-  }
-}
