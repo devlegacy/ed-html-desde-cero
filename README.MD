@@ -10,6 +10,7 @@
   npm start webpack.build.prod
   git add .
   git commit -m "Pre publish app"
+  git push origin --delete gh-pages
   git subtree push --prefix public origin gh-pages
   rm -R ./public/
 ```
