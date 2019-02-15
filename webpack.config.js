@@ -352,6 +352,16 @@ module.exports = (env, args) => {
               'ENV': JSON.stringify(Dvx.inProduction() ? 'production' : 'development'),
               'PUBLIC_PATH': JSON.stringify(Config.publicPath)
             }),
+            new class {
+              apply(compiler) {
+
+
+                compiler.hooks.done.tapAsync("EmitAssetsManifestWebappWebpackPluigin", (stats, callback) => {
+                  // console.log(stats.compilation.records.modules);
+                  console.log(Reflect.ownKeys(stats.compilation.assets))
+                });
+              }
+            },
           ].concat(
             Config.jqueryProvide(),
           ),
@@ -377,6 +387,51 @@ module.exports = (env, args) => {
         },
         modeConfig(mode),
       ),
+      {
+        name: 'sw-config',
+        devtool: Dvx.inProduction() ? (Dvx.inDebug() ? 'hidden-source-map' : 'none') : 'cheap-module-eval-source-map',
+        context: Dvx.paths.fromRoot(),
+        target: Dvx.target(),
+        mode,
+        entry: {
+          'dvx-sw': ['./src/assets/js/sw.js'],
+        },
+        output: {
+          path: resolve(__dirname, Config.outputPath.root),
+          publicPath: Config.publicPath.pathname,
+          filename: '[name].js',
+          chunkFilename: '[name].js',
+        },
+        plugins: [
+          new WebpackNotifierPlugin({
+            title: '[Devexteam] - wrapper start',
+            contentImage: resolve(__dirname, './build-utils/webpack/icons/info.jpg'),
+          }),
+          // new FriendlyErrorsWebpackPlugin(),
+          new webpack.DefinePlugin({
+            'ENV': JSON.stringify(Dvx.inProduction() ? 'production' : 'development'),
+            'PUBLIC_PATH': JSON.stringify(Config.publicPath)
+          }),
+          /**
+           * @typedef {import("webpack/lib/Compiler")} Compiler
+           */
+          new class {
+            /**
+             * @param {Compiler} compiler
+             */
+            apply(compiler) {
+
+
+              compiler.hooks.done.tapAsync("EmitAssetsManifestWebappWebpackPluigin", (stats, callback) => {
+                // console.log(stats.compilation.records.modules);
+                // console.log(stats.compilation);
+                console.log(Reflect.ownKeys(stats.compilation.assets))
+              });
+            }
+          }
+        ],
+        // stats: 'errors-only',
+      }
     ];
   })();
 
