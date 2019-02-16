@@ -65,7 +65,7 @@ class Config {
    *
    */
   target() {
-    const { target } = webpackEnv;
+    const { target } = webpackArgs;
     return target;
   }
 
@@ -118,13 +118,6 @@ class Config {
         query: { utm: 'homescreen' }
       })
       .replace('//', '/');
-
-    log('[url-info]', {
-      href: APP_URL.href, // Full path
-      pathname: APP_URL.pathname,
-      origin: APP_URL.origin,
-      startURL,
-    });
 
     return {
       href: APP_URL.href, // Full path
@@ -179,7 +172,7 @@ class Config {
         // Instead of removing whole path recursively,
         // remove all path's content with exclusion of provided immediate children.
         // Good for not removing shared files from build directories.
-        //exclude: ['./folder'],
+        exclude: ['dvx-sw.js'],
         //exclude: [],
       },
     };

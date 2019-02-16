@@ -69,7 +69,7 @@
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
     "webapp-webpack-plugin": "^2.6.0",
-    "webpack": "^4.29.3",
+    "webpack": "^4.29.4",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14",
     "webpack-fix-style-only-entries": "^0.2.0",
@@ -98,7 +98,7 @@
     "background_color": "#4db7bc",
     "apple_status_bar_style": "black-translucent",
     "serviceWorker": {
-      "src": "sw.js",
+      "src": "dvx-sw.js",
       "update_via_cache": "none"
     },
     "developer_name": "[Devexteam]",

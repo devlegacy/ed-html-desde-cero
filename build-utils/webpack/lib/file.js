@@ -56,6 +56,16 @@ class File {
       return false;
     }
   }
+
+  /**
+   *
+   */
+  write(filename, content) {
+    // write to a new file named 2pac.txt
+    fs.writeFileSync(filename, content, 'utf8');
+  }
+
+
   /**
    * Get info about filePath
    */

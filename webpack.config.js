@@ -1,4 +1,5 @@
 module.exports = (env, args) => {
+
   ((env, args) => {
     global.webpackEnv = env;
     global.webpackArgs = args;
@@ -21,6 +22,9 @@ module.exports = (env, args) => {
     const HtmlSplitWebpackPlugin = require('./build-utils/webpack/src/build/webpack-plugins/html-split-webpack-plugin');
     const { resolve } = require('path');
     log('[cache-dir]:', Dvx.paths.cache());
+    log('[url-info]', Config.publicPath);
+    log('[target]', Dvx.target());
+    log('[config-name]', Config.getConfigName())
     // log('[dev-server]:', webpackDevServer());
     // log(Dvx.paths.fromRoot('./node_modules/'));
     // log(Dvx.paths.fromRoot('./src/'));
@@ -352,16 +356,29 @@ module.exports = (env, args) => {
               'ENV': JSON.stringify(Dvx.inProduction() ? 'production' : 'development'),
               'PUBLIC_PATH': JSON.stringify(Config.publicPath)
             }),
+            /**
+             * @typedef {import("webpack/lib/Compiler")} Compiler
+             */
             new class {
+              /**
+               * @param {Compiler} compiler
+               */
               apply(compiler) {
-
-
+                const url = require('url');
+                const fs = require('fs');
                 compiler.hooks.done.tapAsync("EmitAssetsManifestWebappWebpackPluigin", (stats, callback) => {
                   // console.log(stats.compilation.records.modules);
-                  console.log(Reflect.ownKeys(stats.compilation.assets))
+                  // console.log(stats.compilation);
+                  const assets = Reflect.ownKeys(stats.compilation.assets).map(asset => {
+                    asset = url.resolve(Config.publicPath.pathname, asset);
+                    return asset;
+                  });
+                  const string = `self.__assetsManifest = ${JSON.stringify(assets)}`;
+                  fs.writeFileSync(Dvx.paths.fromRoot('public/assets-manifest.js'), string, 'utf8');
+                  return callback();
                 });
               }
-            },
+            }
           ].concat(
             Config.jqueryProvide(),
           ),
@@ -402,6 +419,21 @@ module.exports = (env, args) => {
           filename: '[name].js',
           chunkFilename: '[name].js',
         },
+        module: {
+          rules: [
+            // Add support for javascript + babel
+            {
+              test: /\.jsx?$/,
+              exclude: /(node_modules|bower_components)/,
+              use: [
+                Config.cacheLoader(),
+                {
+                  loader: 'babel-loader',
+                },
+              ],
+            },
+          ]
+        },
         plugins: [
           new WebpackNotifierPlugin({
             title: '[Devexteam] - wrapper start',
@@ -420,17 +452,16 @@ module.exports = (env, args) => {
              * @param {Compiler} compiler
              */
             apply(compiler) {
-
-
               compiler.hooks.done.tapAsync("EmitAssetsManifestWebappWebpackPluigin", (stats, callback) => {
                 // console.log(stats.compilation.records.modules);
                 // console.log(stats.compilation);
                 console.log(Reflect.ownKeys(stats.compilation.assets))
+                return callback();
               });
             }
-          }
+          },
         ],
-        // stats: 'errors-only',
+        stats: 'errors-only',
       }
     ];
   })();

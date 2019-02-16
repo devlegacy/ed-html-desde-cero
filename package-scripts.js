@@ -21,8 +21,8 @@ const clean = [
   './public/assets/js/**/*.map',
   './public/data/**/*.json',
 ];
-const webpack = 'webpack --progress --colors --hide-modules --config-name app-config --target=web --config ./webpack.config.js';
-const webpackSW = 'webpack --progress --colors --hide-modules --config-name sw-config --target=webworker --config ./webpack.config.js';
+const webpack = 'webpack --progress --colors --hide-modules --config-name app-config --target web --config ./webpack.config.js';
+const webpackSW = 'webpack --progress --colors --hide-modules --config-name sw-config --target webworker --config ./webpack.config.js';
 const nodemon = 'nodemon -e js,json --watch webpack.dvx.js --watch package.json --watch dvx.json --watch webpack.config.js';
 module.exports = {
   scripts: {
